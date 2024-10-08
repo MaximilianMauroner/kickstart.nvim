@@ -54,11 +54,6 @@
       args:
         executable: /bin/bash
 
-    - name: Install Oh My Zsh
-      shell: |
-        bash -c "\$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-      args:
-        executable: /bin/bash
 
     - name: Install Bun
       shell: |
