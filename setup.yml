@@ -1,67 +1,67 @@
-- hosts: localhost
-  become: false  # Do not use sudo for tasks
-  tasks:
-    - name: Add Neovim PPA repository
-      apt_repository:
-        repo: ppa:neovim-ppa/unstable
-        state: present
-
-    - name: Update APT package list
-      apt:
-        update_cache: yes
-
-    - name: Install essential software
-      apt:
-        name:
-          - make
-          - gcc
-          - ripgrep
-          - unzip
-          - git
-          - xclip
-          - neovim
-          - zsh
-        state: present
-
-    - name: Install NVM
-      shell: |
-        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
-      args:
-        executable: /bin/bash
-
-    - name: Source NVM and install Node.js 18.20.4
-      shell: |
-        export NVM_DIR="\$HOME/.nvm"
-        [ -s "\$NVM_DIR/nvm.sh" ] && . "\$NVM_DIR/nvm.sh"
-        nvm install 18.20.4
-        nvm use 18.20.4
-      args:
-        executable: /bin/bash
-
-    - name: Ensure wget is installed
-      apt:
-        name: wget
-        state: present
-
-    - name: Install GitHub CLI
-      shell: |
-        mkdir -p -m 755 ~/.local/bin
-        wget -qO- https://cli.github.com/packages/githubcli-archive-keyring.gpg | tee ~/.local/bin/githubcli-archive-keyring.gpg > /dev/null
-        chmod go+r ~/.local/bin/githubcli-archive-keyring.gpg
-        echo "deb [arch=\$(dpkg --print-architecture) signed-by=~/.local/bin/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | tee ~/.local/bin/github-cli.list > /dev/null
-        sudo apt update
-        sudo apt install gh -y
-      args:
-        executable: /bin/bash
-
-    - name: Install Oh My Zsh
-      shell: |
-        sh -c "\$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-      args:
-        executable: /bin/bash
-
-    - name: Install Bun
-      shell: |
-        curl -fsSL https://bun.sh/install | bash
-      args:
-        executable: /bin/bash
+- hosts: localhost
+  become: false  # Do not use sudo for tasks
+  tasks:
+    - name: Add Neovim PPA repository
+      apt_repository:
+        repo: ppa:neovim-ppa/unstable
+        state: present
+
+    - name: Update APT package list
+      apt:
+        update_cache: yes
+
+    - name: Install essential software
+      apt:
+        name:
+          - make
+          - gcc
+          - ripgrep
+          - unzip
+          - git
+          - xclip
+          - neovim
+          - zsh
+        state: present
+
+    - name: Install NVM
+      shell: |
+        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+      args:
+        executable: /bin/bash
+
+    - name: Source NVM and install Node.js 18.20.4
+      shell: |
+        export NVM_DIR="\$HOME/.nvm"
+        [ -s "\$NVM_DIR/nvm.sh" ] && . "\$NVM_DIR/nvm.sh"
+        nvm install 18.20.4
+        nvm use 18.20.4
+      args:
+        executable: /bin/bash
+
+    - name: Ensure wget is installed
+      apt:
+        name: wget
+        state: present
+
+    - name: Install GitHub CLI
+      shell: |
+        mkdir -p -m 755 ~/.local/bin
+        wget -qO- https://cli.github.com/packages/githubcli-archive-keyring.gpg | tee ~/.local/bin/githubcli-archive-keyring.gpg > /dev/null
+        chmod go+r ~/.local/bin/githubcli-archive-keyring.gpg
+        echo "deb [arch=\$(dpkg --print-architecture) signed-by=~/.local/bin/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | tee ~/.local/bin/github-cli.list > /dev/null
+        sudo apt update
+        sudo apt install gh -y
+      args:
+        executable: /bin/bash
+
+    - name: Install Oh My Zsh
+      shell: |
+        sh -c "\$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+      args:
+        executable: /bin/bash
+
+    - name: Install Bun
+      shell: |
+        curl -fsSL https://bun.sh/install | bash
+      args:
+        executable: /bin/bash
