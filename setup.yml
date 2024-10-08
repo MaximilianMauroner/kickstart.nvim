@@ -31,8 +31,8 @@
 
     - name: Source NVM and install Node.js 18.20.4
       shell: |
-        export NVM_DIR="\$HOME/.nvm"
-        [ -s "\$NVM_DIR/nvm.sh" ] && . "\$NVM_DIR/nvm.sh"
+        export NVM_DIR="$HOME/.nvm"
+        [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
         nvm install 18.20.4
         nvm use 18.20.4
       args:
@@ -56,7 +56,7 @@
 
     - name: Install Oh My Zsh
       shell: |
-        sh -c "\$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+        bash -c "\$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
       args:
         executable: /bin/bash
 
