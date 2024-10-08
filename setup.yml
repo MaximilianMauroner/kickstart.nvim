@@ -53,7 +53,10 @@
         sudo apt install gh -y
       args:
         executable: /bin/bash
-
+    - name: Install Zsh
+      apt:
+        name: zsh
+        state: present
     - name: Install Oh My Zsh
       shell: |
         sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
