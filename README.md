@@ -1,5 +1,9 @@
 # kickstart.nvim
 
+`
+git clone https://github.com/MaximilianMauroner/kickstart.nvim ~/.config/nvim
+`
+
 ## Introduction
 
 A starting point for Neovim that is:
